@@ -9,13 +9,11 @@ import  data from './data.json';
 // create-react-app specific
 import logo from './logo.svg';
 import './App.css';
-console.log({data});
+
 //const FRAMEWORKS = ['React', 'Angular', 'Vue', 'Ember'];
 
-// ACTION CREATORS
-function setFilter(by) {
-  return { type: 'SET_FILTER',by: by };
-}
+
+
 
 // REDUCER
 const initialState = {
@@ -25,7 +23,7 @@ const initialState = {
 function reducer(state = initialState, action) {
   switch (action.type) {
     case 'SET_FILTER':
-      console.log(`Our filter was ${state.filterBy} but is now ${action.by}!`);
+      console.log(`Our filter was ${state.filterBy} but is now ${action.by}`);
       // return a new object
       return Object.assign({}, state, {
         filterBy: action.by
@@ -47,7 +45,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateFilter: (ev) => dispatch(setFilter(ev.target.value))
+    updateFilter: (ev) => store.dispatch({type:"SET_FILTER",by:ev.target.value})
   }
 }
 
